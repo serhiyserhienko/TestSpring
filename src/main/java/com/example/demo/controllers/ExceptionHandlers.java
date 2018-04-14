@@ -24,6 +24,6 @@ public class ExceptionHandlers {
     @ExceptionHandler(value = TestRuntimeException.class)
     public ResponseEntity handle(TestRuntimeException e) {
         System.out.println("HELLO TEST RUNTIME EXCEPTION HANDLER");
-        return new ResponseEntity(HttpStatus.BAD_GATEWAY);
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 }

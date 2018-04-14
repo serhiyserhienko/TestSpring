@@ -22,7 +22,7 @@ public class ProfilingBeanPostProcessor implements BeanPostProcessor {
     private ProfilingControllerMBean profilingControllerMBean;
 
     @Autowired
-    public ProfilingBeanPostProcessor(ProfilingControllerMBean profilingController){
+    public ProfilingBeanPostProcessor(ProfilingControllerMBean profilingController) {
         this.profilingControllerMBean = profilingController;
     }
 
@@ -45,8 +45,9 @@ public class ProfilingBeanPostProcessor implements BeanPostProcessor {
                     LocalTime start = LocalTime.now();
                     Object result = method.invoke(bean, objects);
                     LocalTime end = LocalTime.now();
+                    long millis = Duration.between(start, end).toMillis();
                     if (profilingControllerMBean.isEnabled()) {
-                        System.out.println(Duration.between(start, end).toMillis());
+                        System.out.println(String.format("Finished in %d ms", millis));
                     }
                     return result;
                 }
