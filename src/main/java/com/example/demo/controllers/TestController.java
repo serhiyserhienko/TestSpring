@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 import com.example.demo.services.TestService;
-import com.example.demo.services.TestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/index")
 public class TestController {
 
-    private TestService testService;
+    private final TestService testService;
 
     @Autowired
     public TestController(TestService testService) {
